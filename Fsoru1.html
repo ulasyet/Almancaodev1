@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fsoru1</title>
+    <style type="text/css">
+        body {
+            text-align: left;
+            background-color: #CCFFFF;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+        img {
+            height: 450px;
+            width: 450px;
+        }
+        .container {
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        a {
+            text-decoration: none;
+            color: #009999;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Welcher Spieler hat die meisten FIFA Ballon d'Or Auszeichnungen im Weltfußball gewonnen?</h2>
+        <img src="https://assets.goal.com/images/v3/bltdf7a9bc48ae3d5cc/goal---web-two-way-split--f256043d-d180-4519-83e9-05184f9e897f.png?auto=webp&format=pjpg&width=3840&quality=60" alt="">
+        <form id="answerForm">
+        <h2><input type="radio" name="answer" value="Maradona">Maradona</h2>
+        <h2><input type="radio" name="answer" value="Cristiano Ronaldo">Cristiano Ronaldo</h2>
+        <h2><input type="radio" name="answer" value="Pele">Pele</h2>
+        <h2><input type="radio" name="answer" value="Lionel Messi">Lionel Messi</h2>
+        <h2><input type="radio" name="answer" value="Ronaldinho">Ronaldinho</h2>
+       </form>
+        <button onclick="checkAnswer()">ledie Anworte</button>
+    </div>
+    <div class="timer" id="countdown">00:15</div>
+    <script>
+        function checkAnswer() {
+            var radios = document.getElementsByName("answer");
+            var selectedAnswer = "";
+            for (var i = 0; i < radios.length; i++) {
+                if (radios[i].checked) {
+                    selectedAnswer = radios[i].value;
+                    break;
+                }
+            }
+            var correctAnswer = "Lionel Messi"; // Doğru cevabı burada belirtin
+            if (selectedAnswer === correctAnswer) {
+                window.location.href = "True.html";
+            } else {
+                window.location.href = "False.html";
+            }
+        }
+    </script>
+     <script>
+        const startingSeconds = 15;
+        let time = startingSeconds;
+
+        const countdownEl = document.querySelector("#countdown");
+
+        updateCountdown(); // Sayfanın yüklenmesiyle birlikte sayacı güncelleyin
+
+        const countdownInterval = setInterval(updateCountdown, 1000);
+
+        function updateCountdown() {
+            const minutes = Math.floor(time / 60);
+            let seconds = time % 60;
+
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            countdownEl.innerHTML = `${minutes}:${seconds}`;
+            
+            if (time <= 0) {
+                clearInterval(countdownInterval); // Sayacı durdur
+                window.location.href = "aSite.html";
+            }
+            
+            time--;
+        }
+    </script>
+</body>
+</html>
